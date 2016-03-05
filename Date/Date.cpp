@@ -3,14 +3,14 @@
 
 using namespace std;
 
-//疑问：这里不需要改变内容，但是const又不能加，该怎么办？
+//鐤戦棶锛氳繖閲屼笉闇�瑕佹敼鍙樺唴瀹癸紝浣嗘槸const鍙堜笉鑳藉姞锛岃鎬庝箞鍔烇紵
 void print_dates(array<Date, DateCounts>& arrDates, bool use_overload)
 {
 	for (int i = 0; i < DateCounts; i++) {
 		if (use_overload)
-			arrDates[i].print(); //print输出
+			cout << arrDates[i] ; //閲嶈浇<<杈撳嚭
 		else
-			cout << arrDates[i] ; //重载<<输出
+			arrDates[i].print(); //print杈撳嚭
 	}
 }
 
@@ -21,24 +21,24 @@ int main(int argc, char** argv) {
 	array<Date, DateCounts> arrDates;
 
 
-	cout << "\n--------[非严格模式]生成Date数组------------\n";
+	cout << "\n--------[闈炰弗鏍兼ā寮廬鐢熸垚Date鏁扮粍------------\n";
 	arrDates = CreatePoints(false);
 
 	print_dates(arrDates,false);//Date::print()
 
-	cout << "\n--------[非严格模式]对Date数组排序------------\n";
+	cout << "\n--------[闈炰弗鏍兼ā寮廬瀵笵ate鏁扮粍鎺掑簭------------\n";
 	arrDates = Sort(arrDates);
 	print_dates(arrDates, false);//Date::print()
 
 
-	cout << "\n--------[严格模式]生成Date数组------------\n";
+	cout << "\n--------[涓ユ牸妯″紡]鐢熸垚Date鏁扮粍------------\n";
 	arrDates = CreatePoints(true);
 	
-	print_dates(arrDates, true);//重载<<输出
-	cout << "\n--------[严格模式]对Date数组排序------------\n";
+	print_dates(arrDates, true);//閲嶈浇<<杈撳嚭
+	cout << "\n--------[涓ユ牸妯″紡]瀵笵ate鏁扮粍鎺掑簭------------\n";
 	
 	arrDates = Sort(arrDates);
-	print_dates(arrDates, true);//重载<<输出
+	print_dates(arrDates, true);//閲嶈浇<<杈撳嚭
 
 
 

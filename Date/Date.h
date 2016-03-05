@@ -76,15 +76,15 @@ Date::operator>=(const Date d)
 
 inline ostream&
 __doDatePrint(ostream& os, const Date& d)
-{
+{       
+	//ä¸¤ç§æ–¹å¼éƒ½è¡Œï¼Œæ­¤å¤„ä¸»è¦æ˜¯ç”¨åˆ°friendç‰¹æ€§
 	return os << d.year_ << '-' << d.month_ << '-' << d.day_ << "\n" ;
+	//return os << d.year() << '-' << d.month() << '-' << d.day();
 }
 
 inline ostream&
 operator << (ostream& os, const Date & d)
 {
-	//Á½ÖÖ·½Ê½¶¼ĞĞ
-	//return os << d.year() << '-' << d.month() << '-' << d.day();
 	return __doDatePrint(os, d);
 }
 
@@ -116,14 +116,14 @@ getYearMonthDays(const int year,const int month,const bool strict)
 	return day;
 }
 
-//strict ÊÇ·ñ¿ªÆôÑÏ¸ñÊ±¼äÄ£Ê½ 
-//Ğ£ÑéÈÕÆÚÊÇ·ñ¹æ·¶£¬²¢×Ô¶¯¾ÀÕı£¬ÈòÆ½Äê¼ÆËã£¬´óĞ¡ÔÂ¼ÆËã
-//true: Ğ£ÑéÉú³ÉµÄÄêÔÂÈÕÊÇ·ñ·ûºÏ¹æ·¶
-//false: ²»Ğ£Ñé
+//strict æ˜¯å¦å¼€å¯ä¸¥æ ¼æ—¶é—´æ¨¡å¼ 
+//æ ¡éªŒæ—¥æœŸæ˜¯å¦è§„èŒƒï¼Œå¹¶è‡ªåŠ¨çº æ­£ï¼Œé—°å¹³å¹´è®¡ç®—ï¼Œå¤§å°æœˆè®¡ç®—
+//true: æ ¡éªŒç”Ÿæˆçš„å¹´æœˆæ—¥æ˜¯å¦ç¬¦åˆè§„èŒƒ
+//false: ä¸æ ¡éªŒ
 inline array<Date, DateCounts> 
 CreatePoints(const bool strict)
 {
-	//Ëæ»úÊıÖÖ×Ó
+	//éšæœºæ•°ç§å­
 	srand((unsigned)time(nullptr));
 	array<Date, DateCounts> dates;
 	for (int i = 0; i < DateCounts; i++) {
@@ -137,7 +137,7 @@ CreatePoints(const bool strict)
 	return dates;
 }
 
-//Ã°ÅİÅÅĞò
+//å†’æ³¡æ’åº
 inline array<Date, DateCounts> &
 Sort(array<Date, DateCounts> & arrDates)
 {

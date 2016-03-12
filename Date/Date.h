@@ -12,8 +12,8 @@ using namespace std;
 const int DateCounts = 10;
 class Date;
 
-array<Date, DateCounts> CreatePoints(const bool strict);
-array<Date, DateCounts>& Sort(const array<Date, DateCounts>&);
+void CreatePoints(array<Date, DateCounts>* arrDates,const bool strict);
+void Sort(array<Date, DateCounts>* arrDates, const int sort_type);
 
 int getYearMonthDays(const int year, const int month, const bool strict);
 
@@ -25,11 +25,11 @@ public:
 	Date(int y = 1970, int m = 1, int d = 1)
 		:year_(y), month_(m), day_(d)
 	{}
-	bool operator > (const Date d);
-	bool operator < (const Date d);
-	bool operator == (const Date d);
-	bool operator >= (const Date d);
-	void print() {
+	bool operator > (const Date& d);
+	bool operator < (const Date& d);
+	bool operator == (const Date& d);
+	bool operator >= (const Date& d);
+	void print() const{
 		cout << year_ << '-' << month_ << '-' << day_ << "\n";
 	}
 
@@ -46,7 +46,7 @@ private:
 };
 
 inline bool
-Date::operator>(const Date d)
+Date::operator>(const Date& d)
 {
 	return this->year_ > d.year_
 		|| (this->year_ == d.year_ && this->month_ > d.month_)
@@ -54,7 +54,7 @@ Date::operator>(const Date d)
 }
 
 inline bool
-Date::operator<(const Date d)
+Date::operator<(const Date& d)
 {
 	return this->year_ < d.year_
 		|| (this->year_ == d.year_ && this->month_ < d.month_)
@@ -62,13 +62,13 @@ Date::operator<(const Date d)
 }
 
 inline bool
-Date::operator==(const Date d)
+Date::operator==(const Date& d)
 {
 	return this->year_ == d.year_ && this->month_ == d.month_ && this->day_ == d.day_;
 }
 
 inline bool
-Date::operator>=(const Date d)
+Date::operator>=(const Date& d)
 {
 	return *this > d || *this == d;
 }
@@ -76,15 +76,15 @@ Date::operator>=(const Date d)
 
 inline ostream&
 __doDatePrint(ostream& os, const Date& d)
-{       
-	//ä¸¤ç§æ–¹å¼éƒ½è¡Œï¼Œæ­¤å¤„ä¸»è¦æ˜¯ç”¨åˆ°friendç‰¹æ€§
+{
 	return os << d.year_ << '-' << d.month_ << '-' << d.day_ << "\n" ;
-	//return os << d.year() << '-' << d.month() << '-' << d.day();
 }
 
 inline ostream&
 operator << (ostream& os, const Date & d)
 {
+	//Á½ÖÖ·½Ê½¶¼ĞĞ
+	//return os << d.year() << '-' << d.month() << '-' << d.day();
 	return __doDatePrint(os, d);
 }
 
@@ -116,42 +116,44 @@ getYearMonthDays(const int year,const int month,const bool strict)
 	return day;
 }
 
-//strict æ˜¯å¦å¼€å¯ä¸¥æ ¼æ—¶é—´æ¨¡å¼ 
-//æ ¡éªŒæ—¥æœŸæ˜¯å¦è§„èŒƒï¼Œå¹¶è‡ªåŠ¨çº æ­£ï¼Œé—°å¹³å¹´è®¡ç®—ï¼Œå¤§å°æœˆè®¡ç®—
-//true: æ ¡éªŒç”Ÿæˆçš„å¹´æœˆæ—¥æ˜¯å¦ç¬¦åˆè§„èŒƒ
-//false: ä¸æ ¡éªŒ
-inline array<Date, DateCounts> 
-CreatePoints(const bool strict)
+//strict ÊÇ·ñ¿ªÆôÑÏ¸ñÊ±¼äÄ£Ê½ 
+//Ğ£ÑéÈÕÆÚÊÇ·ñ¹æ·¶£¬²¢×Ô¶¯¾ÀÕı£¬ÈòÆ½Äê¼ÆËã£¬´óĞ¡ÔÂ¼ÆËã
+//true: Ğ£ÑéÉú³ÉµÄÄêÔÂÈÕÊÇ·ñ·ûºÏ¹æ·¶
+//false: ²»Ğ£Ñé
+inline void
+CreatePoints(array<Date, DateCounts> *dates ,const bool strict)
 {
-	//éšæœºæ•°ç§å­
+	//Ëæ»úÊıÖÖ×Ó
 	srand((unsigned)time(nullptr));
-	array<Date, DateCounts> dates;
+	
 	for (int i = 0; i < DateCounts; i++) {
 		int year, month, day;
 		year = 2016 -(rand() % DateCounts);
 		month = rand() % 11+1;
 		day = getYearMonthDays(year, month, strict);
-		dates[i] = Date(year,month,day);
+		(*dates)[i] = Date(year,month,day);
 	}
-
-	return dates;
 }
 
-//å†’æ³¡æ’åº
-inline array<Date, DateCounts> &
-Sort(array<Date, DateCounts> & arrDates)
+//Ã°ÅİÅÅĞò
+inline void 
+Sort(array<Date, DateCounts> * arrDates, const int sort_type)
 {
-	Date tmp;
-	for (int i = 0; i < DateCounts; i++) {
-		for (int j = 0, len = DateCounts - 1 - i; j < len; j++) {
-			if (arrDates[j] > arrDates[j + 1]) {
-				tmp = arrDates[j];
-				arrDates[j] = arrDates[j+1];
-				arrDates[j + 1] = tmp;
+	if (sort_type) {
+		std::sort(arrDates->begin(), arrDates->end());
+	}
+	else {
+		Date tmp;
+		for (int i = 0; i < DateCounts; i++) {
+			for (int j = 0, len = DateCounts - 1 - i; j < len; j++) {
+				if ((*arrDates)[j] > (*arrDates)[j + 1]) {
+					tmp = (*arrDates)[j];
+					(*arrDates)[j] = (*arrDates)[j + 1];
+					(*arrDates)[j + 1] = tmp;
+				}
 			}
 		}
 	}
-	return arrDates;
 }
 
 #endif // !__NILYANG_DATE__

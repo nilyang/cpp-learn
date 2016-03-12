@@ -3,45 +3,56 @@
 
 using namespace std;
 
-//鐤戦棶锛氳繖閲屼笉闇�瑕佹敼鍙樺唴瀹癸紝浣嗘槸const鍙堜笉鑳藉姞锛岃鎬庝箞鍔烇紵
-void print_dates(array<Date, DateCounts>& arrDates, bool use_overload)
+//两种方式打印，两种方式遍历
+void print_dates(const array<Date, DateCounts>* arrDates, bool use_overload,bool use_for_iter=false)
 {
-	for (int i = 0; i < DateCounts; i++) {
-		if (use_overload)
-			cout << arrDates[i] ; //閲嶈浇<<杈撳嚭
-		else
-			arrDates[i].print(); //print杈撳嚭
+	if (use_for_iter) {
+		for (Date d : *arrDates) {
+			if (use_overload)
+				cout << d;//重载<<输出
+			else
+				d.print();//print输出
+		}
 	}
+	else {
+		for (int i = 0; i < DateCounts; i++) {
+			if (use_overload)
+				(*arrDates)[i].print(); //print输出
+			else
+				cout << (*arrDates)[i]; //重载<<输出
+		}
+	}
+	
 }
 
 int main(int argc, char** argv) {
 	
 
 
-	array<Date, DateCounts> arrDates;
+	auto arrDates = new array<Date, DateCounts> ;
 
 
-	cout << "\n--------[闈炰弗鏍兼ā寮廬鐢熸垚Date鏁扮粍------------\n";
-	arrDates = CreatePoints(false);
+	cout << "\n--------[非严格模式]生成Date数组------------\n";
+	CreatePoints(arrDates,false);
 
 	print_dates(arrDates,false);//Date::print()
 
-	cout << "\n--------[闈炰弗鏍兼ā寮廬瀵笵ate鏁扮粍鎺掑簭------------\n";
-	arrDates = Sort(arrDates);
+	cout << "\n--------[非严格模式]对Date数组排序------------\n";
+	Sort(arrDates,1);//std sort
 	print_dates(arrDates, false);//Date::print()
 
-
-	cout << "\n--------[涓ユ牸妯″紡]鐢熸垚Date鏁扮粍------------\n";
-	arrDates = CreatePoints(true);
 	
-	print_dates(arrDates, true);//閲嶈浇<<杈撳嚭
-	cout << "\n--------[涓ユ牸妯″紡]瀵笵ate鏁扮粍鎺掑簭------------\n";
+	cout << "\n--------[严格模式]生成Date数组------------\n";
+	CreatePoints(arrDates, true);//严格模式（校验日期和闰年）
 	
-	arrDates = Sort(arrDates);
-	print_dates(arrDates, true);//閲嶈浇<<杈撳嚭
+	print_dates(arrDates, true);//重载<<输出
+	cout << "\n--------[严格模式]对Date数组排序------------\n";
+	
+	Sort(arrDates, 2);//冒泡
+	print_dates(arrDates, true, true);//重载<<输出
 
-
-
+	//释放内存
+	delete[]arrDates;
 
 	system("pause");
 

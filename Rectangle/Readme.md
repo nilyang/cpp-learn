@@ -24,4 +24,4 @@
 }
 ```
 下面的图，可以清楚看到构造及析构过程，delete释放堆空间之后，pr4指向不明地址，不可以*pr4操作，只能打印地址看看:P。
-![附带执行结果图片截图](http://1taomi.oss-cn-hangzhou.aliyuncs.com/tech-blog/Rectangle2.png)
+![附带执行结果图片截图](http://1taomi.oss-cn-hangzhou.aliyuncs.com/tech-blog/Rectangle.png)

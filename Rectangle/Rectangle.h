@@ -12,7 +12,7 @@ class Rectangle;
 //输出<<重载
 inline std::ostream& operator << (std::ostream& os,const Rectangle& rct);
 
-
+inline std::ostream& operator << (std::ostream& os, const Point& p);
 class Shape
 {
 public:
@@ -76,13 +76,18 @@ public:
 
 //拷贝构造，会先调用基类的构造函数，由内而外
 inline 
-Rectangle::Rectangle(const Rectangle & other):Shape()
+Rectangle::Rectangle(const Rectangle & other):Shape(other)
 {
 	std::cout << "Rectangle copy constructor\n"; 
 	if (this != &other) {
 		height = other.height;
 		width = other.width;
-		leftUp = new Point(*other.leftUp);//默认拷贝构造
+		if (other.leftUp) {
+			leftUp = new Point(*other.leftUp);//默认拷贝构造
+		}
+		else {
+			leftUp = nullptr;
+		}
 	}
 }
 
@@ -98,7 +103,13 @@ Rectangle::operator=(const Rectangle & other)
 
 	this->height = other.height;
 	this->width = other.width;
-	this->leftUp = new Point(*other.leftUp);
+
+	if (other.leftUp) {
+		this->leftUp = new Point(*other.leftUp);//默认拷贝构造
+	}
+	else {
+		this->leftUp = nullptr;
+	}
 
 	return *this;
 }

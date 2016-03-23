@@ -4,106 +4,114 @@
 
 #include <iostream>
 
-//前置声明
+//pre declare
 class Shape;
 class Point;
 class Rectangle;
 class Circle;
 
-//输出<<重载
-inline std::ostream& operator << (std::ostream& os, const Point& p);
-inline std::ostream& operator << (std::ostream& os, const Rectangle& rct);
-inline std::ostream& operator << (std::ostream& os, const Circle& c);
+//operator overload
+//inline std::ostream& operator << (std::ostream& os, const Point& p);
+//inline std::ostream& operator << (std::ostream& os, const Rectangle& rct);
+//inline std::ostream& operator << (std::ostream& os, const Circle& c);
+//
+//inline std::ostream &
+//operator<<(std::ostream & os, const Rectangle& rct)
+//{
+//    return std::cout << "Rectangle: With=" << rct.getWidth()
+//        << ", height=" << rct.getHeight()
+//        << "," << rct.getPoint()
+//        << "\n";
+//}
+//
+//inline std::ostream &
+//operator<<(std::ostream & os, const Point & p)
+//{
+//    return std::cout << "Point:(" << p.getX() << "," << p.getY() << ")" << "\n";
+//}
+//
+//inline std::ostream &
+//operator << (std::ostream & os, const Circle & c)
+//{
+//    return std::cout << "Circle: R=" << c.getRadius()
+//        << ", Center=" << c.getCenter()
+//        << ", Area=" << c.getArea()
+//        << "\n";
+//}
+
+
+inline std::ostream& operator << (std::ostream& os, const Shape& base);
 
 class Shape
 {
-	int no;
+    int no;
+    int type;
 public:
-	Shape(int num=0):no(num) {}
-	virtual int getArea() = 0;
-	virtual ~Shape(){}
+    Shape(int _num = 0, const int _type = 0)
+        :no(_num),type(_type)
+    {}
+    int getNum() const { return no; }
+    int getType() const { return type; }
+    virtual int getArea() const = 0;
+    virtual ~Shape() {}
 };
 
 class Point
 {
-	int x;
-	int y;
+    int x;
+    int y;
 public:
-	Point(int _x, int _y)
-		:x(_x), y(_y)
-	{
-		std::cout << "Point default constructor\n";
-	}
-	~Point()
-	{
-		std::cout << "Point destructor\n";
-	}
+    Point(int _x = 0, int _y = 0)
+        :x(_x), y(_y)
+    {}
+    ~Point(){}
 
-	int getX() const { return x; }
-	int getY() const { return y; }
-	
+    int getX() const { return x; }
+    int getY() const { return y; }
 };
 
 class Rectangle : public Shape
 {
-	int width;
-	int height;
-	Point leftUp;
+    int width;
+    int height;
+    Point leftUp;
 public:
-	Rectangle(int no=0,int w=0,int h=0,int x=0,int y=0)
-		:Shape(no),leftUp(x,y),width(w),height(h)
-	{}
-	int getWidth() const { return width; }
-	int getHeight() const { return height; }
-	const Point& getPoint() const { return leftUp; }
-	virtual int getArea() const
-	{
-		return width * height;
-	}
+    Rectangle(int no = 0, int w = 0, int h = 0, int x = 0, int y = 0)
+        :Shape(no,0), width(w), height(h),leftUp(x,y)
+    {}
+    ~Rectangle() {}
+
+    virtual int getArea() const
+    {
+        return width * height;
+    }
 };
 class Circle : public Shape
 {
-	Point center;
-	int radius;
+    Point center;
+    int radius;
 public:
-	Circle(int no=0,int r=0, int x=0, int y=0)
-		:Shape(no), center(Point(x,y)), radius(r)
-	{}
-	int getRadius() const { return radius; }
-	const Point& getCenter() const { return center; }
+    ~Circle(){}
+    Circle(int no = 0, int r = 0, int x = 0, int y = 0)
+        :Shape(no,1),center(x, y), radius(r)
+    {}
 
-	double getArea(double pi=3.14159) const 
-	{
-		return pi * radius * radius;
-	}
+    double getAreaCircle(double pi = 3.14159)  const
+    {
+        return pi * radius * radius;
+    }
 
-	virtual int getArea() const 
-	{
-		return ;
-	}
+    virtual int getArea() const
+    {
+        return (int)getAreaCircle();
+    }
 };
 
 
-
-inline std::ostream &
-operator<<(std::ostream & os, const Rectangle& rct)
+inline std::ostream & operator<<(std::ostream & os, const Shape & base)
 {
-	return std::cout << "with:" << rct.getWidth() << ", height:" << rct.getHeight()
-		<< "," << rct.getPoint() << "\n";
-}
+    const char * s[2] = { "Rectangle", "Circle" };
 
-inline std::ostream &
-operator<<(std::ostream & os, const Point & p)
-{
-	return std::cout << "Point:(" << p.getX() << "," << p.getY() << ")";
+    return std::cout << s[base.getType()] << " : NO=" << base.getNum() << ", Area=" << base.getArea() << "\n";
 }
-
-inline std::ostream &
-operator << (std::ostream & os, const Circle & c)
-{
-	return std::cout << "radius:" << c.getRadius() 
-					 << ", center:" << c.getCenter() 
-					 << ",Area:"<< c.getArea();
-}
-
 #endif

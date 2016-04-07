@@ -22,7 +22,7 @@ public:
     {
         std::cout << "no's address = " << &no << "\n";
         std::cout << "weight's address = " << &weight << "\n";
-        std::cout << "key's address = " << &key << "\n";
+        std::cout << "key's address = " << static_cast<void *>(&key) << "\n";
     }
     virtual void process() 
     {
@@ -51,7 +51,7 @@ public:
     void print()
     {
         std::cout << "size's address = " << &size << "\n";
-        std::cout << "type's address = " << &type << "\n";
+        std::cout << "type's address = " << static_cast<void *>(&type) << "\n";
     }
 
     void save() { }

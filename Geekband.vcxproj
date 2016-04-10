@@ -19,10 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Vector\Vector.h" />
+    <ClCompile Include="Programmer\Programmer_Test.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Vector\Vector_test.cpp" />
+    <ClInclude Include="Programmer\Lab.h" />
+    <ClInclude Include="Programmer\Programer.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{1DF87945-8BC2-4119-BDA3-962E9E916D0C}</ProjectGuid>

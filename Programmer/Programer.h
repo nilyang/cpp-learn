@@ -59,7 +59,7 @@ std::wostream & operator<<(std::wostream &wos, const Programmer & obj)
 
 //初始化set用的，按照指定顺序插入set的仿函数
 template<typename T>
-struct ProgrammerIdGreater
+struct ProgrammerIdGreater:public std::binary_function<T, T, bool>
 {
     bool operator()(const T& left, const T& right) const
     {
@@ -70,7 +70,7 @@ struct ProgrammerIdGreater
 
 //按名字升序
 template<typename T>
-struct ProgrammerNameComparer
+struct ProgrammerNameComparer:public std::binary_function<T, T, bool>
 {
     bool operator()(const T& left, const T& right) const
     {

@@ -15,16 +15,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Programmer\Programmer_Test.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <None Include="Programmer\Readme.md">
+      <Filter>Header Files\Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Programmer\Programer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Programmer\Lab.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Programmer\Programmer_Test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

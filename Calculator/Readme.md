@@ -22,6 +22,15 @@
  float  f = 1.0F;//必须指明`F`，单精度
  long   l = 100L;//默认`int`，需要指明`L`
  int    i = 100;
+
+ //另外，如果需要指定精度输出，则需要包含<iomanip>标准库头文件，使用std::fixed来固定输出精度
+ 
+ std::cout << std::fixed ;
+ Calculator<float> CalFloat;
+ std::cout << "float limit: " << std::setprecision(CalFloat.getPrecision()) 
+                              << CalFloat.GetLimit() << std::endl;
+ 
+
 ```
 
 <a name="workresult"/>

@@ -15,17 +15,17 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Programmer\Readme.md">
+    <None Include="Calculator\Readme.md">
       <Filter>Header Files\Resource Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Programmer\Programer.h">
+    <ClInclude Include="Calculator\Calculator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Programmer\Programmer_Test.cpp">
+    <ClCompile Include="Calculator\Calculator_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

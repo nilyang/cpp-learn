@@ -19,13 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Programmer\Readme.md" />
+    <None Include="Calculator\Readme.md" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Programmer\Programer.h" />
+    <ClInclude Include="Calculator\Calculator.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Programmer\Programmer_Test.cpp" />
+    <ClCompile Include="Calculator\Calculator_test.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{1DF87945-8BC2-4119-BDA3-962E9E916D0C}</ProjectGuid>

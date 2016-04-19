@@ -23,8 +23,8 @@
 
 代码在VS2015下编译通过
 
-* 结果，使用了 `三种` 方式，尝试对对ID=3的元素修改其Name值，下面是观察和结论：
- * 1.查到元素，*it.setName(newName)，修改失败，修改的是set元素的一份copy，所以对set无影响
- * 2.查到元素，并在算法functor里面修改（FindAndModifyProgrammer），修改失败，迭代器中不允许修改
- * 3.查到元素，const_cast<Programmer&>(*it).setName(newName)，成功！ 
+* 结果，使用了 `三种` 方式，尝试对对`ID=3`的元素修改其`Name`值，下面是观察和结论：
+  * 1.查到元素，`*it.setName(newName)`，修改失败，修改的是`set`元素的一份`copy`，所以对`set`无影响
+  * 2.查到元素，并在算法functor里面修改（`FindAndModifyProgrammer`），修改失败，迭代器中不允许修改
+  * 3.查到元素，`const_cast<Programmer&>(*it).setName(newName)`，成功！ 
 ![STL-set-ordered](STL-set-ordered.png)

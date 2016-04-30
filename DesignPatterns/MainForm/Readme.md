@@ -3,7 +3,7 @@
 ## <a name="index"/> 目录
 
 * [问题](#question)
-* [题解及运行结果](#workresult)
+* [题解及运行结果](#answer)
 
 ## <a name="question"/> 问题
 > 考虑一个文件分割器的设计。`MainForm` 为界面类，收集用户输入的文件路径和分割数量。

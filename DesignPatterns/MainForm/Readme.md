@@ -13,8 +13,7 @@
 -[x] 2. 在`Split()`分割过程中，实现对进度条的实时通知，即对`processBar`的赋值
 -[x] 3. 使用松耦合面向对象设计方法和思想，无需编写具体算法实现，可使用伪码表示设计
 
-![question](question.png)
-
+具体问题，参考[附录1](PS1)
 
 ## <a name="answer"/> 题解
 
@@ -27,3 +26,8 @@
 ### 解答
 
 * 参考代码
+
+
+## <a name="ps1"/>附录1
+
+![question](question.png)

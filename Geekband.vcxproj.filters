@@ -15,17 +15,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Calculator\Readme.md">
-      <Filter>Header Files\Resource Files</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Calculator\Calculator.h">
+    <ClInclude Include="DesignPatterns\MainForm\FileSpliter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Calculator\Calculator_test.cpp">
+    <ClCompile Include="DesignPatterns\MainForm\FileSpliter_Test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

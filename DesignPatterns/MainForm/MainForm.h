@@ -18,11 +18,25 @@ public:
         this->txtFilePath;//获取路径
         this->txtFileNumber;//获取number
         
-        ProgressBar* progressBar;
+        IObserver* progressBar = new ProgressBar();
         this->Aattach(progressBar);
+        
     }
 
-    
+    void fileReader()
+    {
+        for (int i = 0, num = txtFileNumber->GetNumber();i<num; i++) {
+            //file Read
+            //...
+            this->Splitor();
+            this->Notify();
+        }
+    }
+
+    void Splitor()
+    {
+
+    }
 };
 
 #endif // !__NILYANG_MAINFORM__

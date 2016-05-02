@@ -10,6 +10,12 @@ public:
         return text;
     }
 
+    int GetNumber() const
+    {
+        //string to number
+        return 1;
+    }
+
     void SetText(const std::string & txt)
     {
         text = txt;

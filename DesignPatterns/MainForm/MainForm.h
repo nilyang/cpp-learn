@@ -59,7 +59,7 @@ inline void MainForm::Splitor()
 {
     FileSpliter *spliter = new SplitorA(txtFilePath->GetValue(), txtFileNumber->GetNumber());
     spliter->Aattach(new ProgressBar());
-    spliter->Split();
+    spliter->doSplit();
     delete spliter;
 }
 

@@ -4,6 +4,7 @@
 #include"IObserver.h"
 
 #include<list>
+#include<memory>
 
 class ISubject
 {
@@ -14,34 +15,38 @@ public :
     virtual void Detach(IObserver*);
     virtual void Notify();
 protected:
-    ISubject();
+    ISubject() 
+    : m_Observers(new std::list<IObserver*>())
+    {}
 private:
-    std::list<IObserver*> m_Container;
-
+    std::list<IObserver*> *m_Observers;
 };
 
-
-inline ISubject::ISubject()
+inline ISubject::~ISubject()
 {
+    //remove all
+    std::for_each(m_Observers->begin(), m_Observers->end(),std::default_delete<IObserver>());
+    delete m_Observers;
 }
+
 
 inline
 void ISubject::Aattach(IObserver* observer)
 {
-    m_Container.push_back(observer);
+    m_Observers->push_back(observer);
 }
 
 inline
 void ISubject::Detach(IObserver* observer)
 {
     //²éÕÒÔªËØ
-    std::remove(m_Container.begin(), m_Container.end(), observer);
+    std::remove(m_Observers->begin(), m_Observers->end(), observer);
 }
 
 inline
 void ISubject::Notify()
 {
-    std::for_each(m_Container.begin(), m_Container.end(), [](IObserver * observer) {
+    std::for_each(m_Observers->begin(), m_Observers->end(), [](IObserver * observer) {
         observer->Update();
     });
 }

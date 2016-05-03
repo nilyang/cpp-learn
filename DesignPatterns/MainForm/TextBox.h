@@ -5,15 +5,15 @@ class TextBox
 {
     std::string text;
 public:
-    const std::string& GetText() const
+    TextBox(const std::string &txt) :text(txt){}
+    const std::string& GetValue() const
     {
         return text;
     }
 
     int GetNumber() const
     {
-        //string to number
-        return 1;
+        return std::stoi(text);
     }
 
     void SetText(const std::string & txt)

@@ -1,42 +1,68 @@
 #pragma once
 #ifndef __NILYANG_MAINFORM__
-#include "ProgressBar.h"
-#include "Form.h"
-#include "TextBox.h"
-#include "ISubject.h"
-
 #include<algorithm>
 
-class MainForm : public Form , public ISubject
+#include "Form.h"
+#include "TextBox.h"
+
+#include "ProgressBar.h" //Observer
+#include "FileSpliter.h" //Subject
+
+class MainForm : public Form
 {
     TextBox* txtFilePath;
     TextBox* txtFileNumber;
 public:
+    ~MainForm();
+
     void Button1_Click()
     {
-        //TODO 收集文件路径
-        this->txtFilePath;//获取路径
-        this->txtFileNumber;//获取number
-        
-        IObserver* progressBar = new ProgressBar();
-        this->Aattach(progressBar);
-        
+        CaptureInput();
+        Splitor();
     }
 
-    void fileReader()
-    {
-        for (int i = 0, num = txtFileNumber->GetNumber();i<num; i++) {
-            //file Read
-            //...
-            this->Splitor();
-            this->Notify();
-        }
-    }
+    //模拟用户输入
+    void CaptureInput();
 
-    void Splitor()
-    {
+    //调用分割器分割文件
+    void Splitor();
 
-    }
 };
+
+inline MainForm::~MainForm()
+{
+    if (txtFilePath != nullptr) {
+        delete txtFilePath;
+        txtFilePath = nullptr;
+    }
+
+    if (txtFileNumber != nullptr) {
+        delete txtFileNumber;
+        txtFileNumber = nullptr;
+    }
+}
+
+
+inline void MainForm::CaptureInput()
+{
+    if (txtFilePath != nullptr) {
+        delete txtFilePath;
+    }
+    if (txtFileNumber != nullptr) {
+        delete txtFileNumber;
+    }
+    txtFilePath = new TextBox("file.log");
+    txtFileNumber = new TextBox("10");
+}
+
+inline void MainForm::Splitor()
+{
+    FileSpliter *spliter = new SplitorA(txtFilePath->GetValue(), txtFileNumber->GetNumber());
+    spliter->Aattach(new ProgressBar());
+    spliter->Split();
+    delete spliter;
+}
+
+
 
 #endif // !__NILYANG_MAINFORM__

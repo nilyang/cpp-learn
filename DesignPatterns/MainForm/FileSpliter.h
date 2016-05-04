@@ -28,10 +28,7 @@ public:
         }
     }
 
-    virtual void Split()
-    {
-        std::cout << ".";
-    }
+    virtual void Split() = 0;
 
     //分割处理流程
     void Process(int sec = 1000)

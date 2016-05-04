@@ -24,10 +24,7 @@ public:
     virtual void Update()
     {
         this->IncrProgress(1);
-        std::cout << ".";
     }
-
-
 };
 
 #endif // !__NILYANG_PROGRESSBAR__

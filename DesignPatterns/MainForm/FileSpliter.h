@@ -17,7 +17,8 @@ public:
     virtual ~FileSpliter() = default;
     FileSpliter(const std::string &path, const int num)
     :filePath(path),fileNumber(num)
-    {}
+    {
+    }
 
     void doSplit()
     {

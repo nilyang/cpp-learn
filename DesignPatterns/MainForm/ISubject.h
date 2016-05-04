@@ -2,7 +2,7 @@
 #ifndef __NILYANG_ISUBJECT__
 
 #include"IObserver.h"
-
+#include<algorithm>
 #include<list>
 #include<memory>
 

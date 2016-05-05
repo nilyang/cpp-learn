@@ -19,16 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DesignPatterns\MainForm\FileSpliter_Test.cpp" />
+    <ClCompile Include="DesignPatterns\DrawingSystem\DrawingSystem_Test.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DesignPatterns\MainForm\FileSpliter.h" />
-    <ClInclude Include="DesignPatterns\MainForm\Form.h" />
-    <ClInclude Include="DesignPatterns\MainForm\IObserver.h" />
-    <ClInclude Include="DesignPatterns\MainForm\ISubject.h" />
-    <ClInclude Include="DesignPatterns\MainForm\MainForm.h" />
-    <ClInclude Include="DesignPatterns\MainForm\ProgressBar.h" />
-    <ClInclude Include="DesignPatterns\MainForm\TextBox.h" />
+    <ClInclude Include="DesignPatterns\DrawingSystem\Circle.h" />
+    <ClInclude Include="DesignPatterns\DrawingSystem\DrawingSystem.h" />
+    <ClInclude Include="DesignPatterns\DrawingSystem\Line.h" />
+    <ClInclude Include="DesignPatterns\DrawingSystem\Rec.h" />
+    <ClInclude Include="DesignPatterns\DrawingSystem\IShape.h" />
+    <ClInclude Include="DesignPatterns\DrawingSystem\IShapeFactory.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{1DF87945-8BC2-4119-BDA3-962E9E916D0C}</ProjectGuid>

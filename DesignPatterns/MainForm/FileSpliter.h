@@ -20,7 +20,7 @@ public:
     {
     }
 
-    void doSplit()
+    void DoSplit()
     {
         //默认分割算法策略
         for (int i = 0; i < fileNumber; i++) {

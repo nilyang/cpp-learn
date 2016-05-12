@@ -123,28 +123,30 @@ Singleton* Singleton::getInstance() {
 
 平时在工作中，虽然没有使用C++，但是常常无意识的使用到了该模式，只不过由于语言的特性，将该模式应用起来更为平坦。
 
-例如，由于我平时使用的是PHP，PHP在数据结构上非常方便的实现`享元模式`，因为map可以通过数组来实现。平时由于不想多次创建对象，
-
-都是使用的该方法来避免。比如Redis和DB的实例，一般需要共享，但是使用的是面向过程式的方法。
+例如，由于我平时使用的是PHP，PHP在数据结构上非常方便的实现`享元模式`，因为map可以通过数组来实现。平时由于不想多次创建对象，都是使用的该方法来避免。
 
 > PHP 的版本
+
+
 ```PHP
 //作为对比，该方法和C++的实现具有异曲同工之妙
-function getDB($key='srv1')
+class FontFactory
 {
-   static $dbPool = [];
-   if (!isset($dbPool[$key]) || !($dbPool[$key] instanceof Database)){
-      $dbPool[$key] = new Database(getDBConfig($key));
-   }
+  private static $fontPool = [];
+  static function GetFont($key='srv1')
+  {
+    if (!isset($fontPool[$key]) || !($fontPool[$key] instanceof Database)){
+        $fontPool[$key] = new Font($key);
+    }
 
-   return $dbPool[$key];
+    return $fontPool[$key];
+  }
 }
-
-getDB();
 
 ```
 
 > C++ 的版本
+
 ```C++
 
 class FontFactory{

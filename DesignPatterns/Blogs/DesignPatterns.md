@@ -1,4 +1,4 @@
-# 设计模式
+# GeekBand C++ 设计模式 (3)   
 
 ## <a name="index"/> 目录
 

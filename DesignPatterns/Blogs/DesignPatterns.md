@@ -22,6 +22,74 @@
   - 保证一个类只有一个实例，并提供一个该实例的全局访问点。
 
 
+* 注意要点
+
+ - Singleton的构造器可以设为proected，只允许派生，但不能由外部直接创建对象
+ - 一般不要支持拷贝构造和Clone接口，因为多个对象违背了该模式的设计初衷
+ - 注意多线程环境下的线程安全问题，以及双检查锁的问题（不能用双检查锁）
+ 
+```C++
+
+class Singleton{
+private://禁用构造器
+    Singleton();
+    Singleton(const Singleton& other);
+public:
+    static Singleton* getInstance();
+    static Singleton* m_instance;
+};
+
+Singleton* Singleton::m_instance=nullptr;
+
+//线程非安全版本
+Singleton* Singleton::getInstance() {
+    if (m_instance == nullptr) {
+        m_instance = new Singleton();
+    }
+    return m_instance;
+}
+
+//线程安全版本，但锁的代价过高
+Singleton* Singleton::getInstance() {
+    Lock lock;
+    if (m_instance == nullptr) {
+        m_instance = new Singleton();
+    }
+    return m_instance;
+}
+
+//双检查锁，但由于内存读写reorder不安全
+Singleton* Singleton::getInstance() {
+    
+    if(m_instance==nullptr){
+        Lock lock;
+        if (m_instance == nullptr) {
+            m_instance = new Singleton();
+        }
+    }
+    return m_instance;
+}
+
+//C++ 11版本之后的跨平台实现 (volatile)
+std::atomic<Singleton*> Singleton::m_instance;
+std::mutex Singleton::m_mutex;
+
+Singleton* Singleton::getInstance() {
+    Singleton* tmp = m_instance.load(std::memory_order_relaxed);
+    std::atomic_thread_fence(std::memory_order_acquire);//获取内存fence
+    if (tmp == nullptr) {
+        std::lock_guard<std::mutex> lock(m_mutex);
+        tmp = m_instance.load(std::memory_order_relaxed);
+        if (tmp == nullptr) {
+            tmp = new Singleton;
+            std::atomic_thread_fence(std::memory_order_release);//释放内存fence
+            m_instance.store(tmp, std::memory_order_relaxed);
+        }
+    }
+    return tmp;
+}
+ 
+ ``` 
 
 **UML结构关系图**
 
@@ -42,6 +110,73 @@
 
 ### <a name="flyweight"/> 享元模式
 
+> 享元模式主要解决的问题是
+
+- 在软件系统中采用纯粹对象方案时，大量粒度的对象会很快充斥在系统中，从而带来很高的运行代价（消耗内存）
+- 如何避免大量细粒度对象问题的同时，让外部客户程序仍然能透明地使用面向对象方式来进行操作，享元模式应运而生。
+
+> 模式定义
+
+- 运用共享技术，有效地支持大量细粒度的对象。
+
+> 自己的体会
+
+平时在工作中，虽然没有使用C++，但是常常无意识的使用到了该模式，只不过由于语言的特性，将该模式应用起来更为平坦。
+
+例如，由于我平时使用的是PHP，PHP在数据结构上非常方便的实现`享元模式`，因为map可以通过数组来实现。平时由于不想多次创建对象，
+
+都是使用的该方法来避免。比如Redis和DB的实例，一般需要共享，但是使用的是面向过程式的方法。
+
+> PHP 的版本
+```PHP
+//作为对比，该方法和C++的实现具有异曲同工之妙
+function getDB($key='srv1')
+{
+   static $dbPool = [];
+   if (!isset($dbPool[$key]) || !($dbPool[$key] instanceof Database)){
+      $dbPool[$key] = new Database(getDBConfig($key));
+   }
+
+   return $dbPool[$key];
+}
+
+getDB();
+
+```
+
+> C++ 的版本
+```C++
+
+class FontFactory{
+private:
+    map<string,Font* > fontPool;
+    
+public:
+    Font* GetFont(const string& key){
+
+        map<string,Font*>::iterator item=fontPool.find(key);
+        
+        if(item!=footPool.end()){
+            return fontPool[key];
+        }
+        else{
+            Font* font = new Font(key);
+            fontPool[key]= font;
+            return font;
+        }
+
+    }
+    
+    void clear(){
+        //...
+    }
+};
+
+```
+
+**UML结构关系图**
+
+![Flyweight](Flyweight.png)
 
 ## <a name="summery"/> 总结
 

@@ -129,13 +129,13 @@ Singleton* Singleton::getInstance() {
 
 
 ```PHP
-//作为对比，该方法和C++的实现具有异曲同工之妙
+//作为对比，该方法和C++的实现具有异曲同工之妙，主要简化在于MAP结构的语言级别的支持
 class FontFactory
 {
   private static $fontPool = [];
   static function GetFont($key='srv1')
   {
-    if (!isset($fontPool[$key]) || !($fontPool[$key] instanceof Database)){
+    if (!isset($fontPool[$key]) || !($fontPool[$key] instanceof Font)){
         $fontPool[$key] = new Font($key);
     }
 

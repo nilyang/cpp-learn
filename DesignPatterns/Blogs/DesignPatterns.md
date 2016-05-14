@@ -2,21 +2,29 @@
 
 ## <a name="index"/> 目录
 
-* [“性能”模式](#performance)
-  * [单件模式](#singleton)
-  * [享元模式](#flyweight)
+* [“性能”模式](#Performance)
+  * [单件模式](#Singleton)
+  * [享元模式](#Flyweight)
 * [“状态变化”模式](#Statechanges)
   * [状态模式](#State)
   * [备忘录模式](#Memento)
-
+* [“数据结构”模式](#DataStructures)
+  * [组合模式](#Composite)
+  * [迭代器模式](#Iterator)
+  * [职责链模式](#Chain Of Responsibility)
+* [“行为变化”模式](#Behaviorchanges)
+  * [命令模式](#Command)
+  * [访问者模式](#Visitor)
+* [“领域规则”模式](#Domain)
+  * [解析器模式](#Interpreter)  
 * [总结](#summery)
 
 
-## <a name="performance"/> 性能模式
+## <a name="Performance"/> 性能模式
 
 这类模式主要是为了解决对象的性能问题而生，并非组织问题，主要是 `单件模式` 和 `享元模式`
 
-### <a name="singleton"/> 单件模式
+### <a name="Singleton"/> 单件模式
 
 * 动机
   - 在软件系统中，经常有这样一些特殊类，必须保证他们在系统中只存在一个实例才能确保逻辑正确、以及良好的效率。
@@ -112,7 +120,7 @@ Singleton* Singleton::getInstance() {
 
 ```
 
-### <a name="flyweight"/> 享元模式
+### <a name="Flyweight"/> 享元模式
 
 > 享元模式主要解决的问题是
 

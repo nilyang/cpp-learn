@@ -27,12 +27,12 @@
 ### 解答
 
 * 具体代码参考源码部分
-* 设计模式[图解](#AbstractFactory.png)
+* 设计模式[图解](#Composite.png)
 
-### 附录：<a name="AbstractFactory.png"/> 抽象工厂方法图解 
+### 附录：<a name="Composite.png"/> 抽象工厂方法图解 
 
-* 参考链接: [维基百科](https://zh.wikipedia.org/zh-cn/%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82)
+* 参考链接: [维基百科](https://en.wikipedia.org/wiki/Composite_pattern)
 
-![工厂方法](AbstractFactory.png)
+![工厂方法](Composite.png)
 
 

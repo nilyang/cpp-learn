@@ -15,28 +15,30 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DesignPatterns\DrawingSystem\DrawingSystem_Test.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClInclude Include="DesignPatterns\DrawingSystemComplex\Circle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DesignPatterns\DrawingSystemComplex\IShape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DesignPatterns\DrawingSystemComplex\Line.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DesignPatterns\DrawingSystemComplex\Rec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DesignPatterns\DrawingSystemComplex\ComplexShape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DesignPatterns\DrawingSystem\Line.h">
+    <None Include="DesignPatterns\DrawingSystemComplex\Readme.md">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DesignPatterns\DrawingSystem\Rec.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DesignPatterns\DrawingSystem\Circle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DesignPatterns\DrawingSystem\DrawingSystem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DesignPatterns\DrawingSystem\IShape.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DesignPatterns\DrawingSystem\IShapeFactory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DesignPatterns\DrawingSystemComplex\DrawingSystemComplex_Test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

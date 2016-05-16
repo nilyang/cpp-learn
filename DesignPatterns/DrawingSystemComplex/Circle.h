@@ -1,23 +1,16 @@
 #pragma once
 #ifndef __NILYANG_CIRCLE__
 #include"IShape.h"
-#include"IShapeFactory.h"
 class Circle: public IShape
 {
+    std::string shapeName_;
 public:
-    virtual void Drawing()
+    Circle(std::string name= "Circle") :shapeName_(name) {}
+    
+    virtual void Drawing() override
     {
-        std::cout << "Drawing Circle " << std::endl;
+        std::cout << "Drawing : " << shapeName_ << std::endl;
     }
 };
 
-class CircleFactory :public IShapeFactory
-{
-public:
-    virtual IShape* CreateShape()
-    {
-        IShape* pShape = new Circle();
-        return pShape;
-    }
-};
 #endif // !__NILYANG_CIRCLE__

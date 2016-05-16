@@ -1,24 +1,18 @@
 #pragma once
 #ifndef __NILYANG_LINE__
-#include "IShape.h"
-#include "IShapeFactory.h"
+
+#include"IShape.h"
 class Line: public IShape
 {
+    std::string shapeName_;
 public:
-    virtual void Drawing()
+    Line(std::string name="Line") :shapeName_(name) {}
+    virtual void Drawing() override
     {
-        std::cout << "Drawing Line " << std::endl;
+        std::cout << "Drawing Line : " << shapeName_ << std::endl;
     }
 
 };
 
-class LineFactory : public IShapeFactory
-{
-public:
-    virtual IShape* CreateShape()
-    {
-        IShape* pShape = new Line();
-        return pShape;
-    }
-};
+
 #endif // !__NILYANG_LINE__

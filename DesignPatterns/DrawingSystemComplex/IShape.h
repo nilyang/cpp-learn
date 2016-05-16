@@ -1,7 +1,7 @@
 #pragma once
 #ifndef __NILYANG_SHAPE__
 #include<iostream>
-
+#include<string>
 //ÐÎ×´£¨Ðé£©»ùÀà
 class IShape
 {

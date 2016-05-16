@@ -26,10 +26,68 @@
 
 ### 解答
 
-* 具体代码参考源码部分
+* 具体代码参考源码部分，本文只给出代码片段[代码示例](#code)
+* 运行结果[运行结果](#ComplexShape.png)截图
 * 设计模式[图解](#Composite.png)
 
-### 附录：<a name="Composite.png"/> 组合模式图解 
+
+### 附录1：<a name="code"/> 代码片段示例
+
+* 代码片段
+
+```C++
+//we can use Composite Pattern to solve this problem
+void Test_Drawing()
+{
+    //create Shapes
+    ComplexShape *complexShape = new ComplexShape("complexRoot");
+    Circle *circle = new Circle("Circle");
+    Rec *rect = new Rec("Rectangle");
+    Line *line = new Line("Line");
+    ComplexShape *complexShape2 = new ComplexShape("complexChild");
+    Line *line2 = new Line("Line2");
+
+    //1. Composing Shapes in one Big "ComplexShape"
+    //Big Complex Shape by three Leaf Shape
+    complexShape->AddShape(circle);
+    complexShape->AddShape(rect);
+    complexShape->AddShape(line);
+    
+    //2. Sub Complex Shape composted by One Leaf Shape
+    complexShape2->AddShape(line2);
+    //Big Complex Shape include one Complex Shape.
+    complexShape->AddShape(complexShape2);
+
+    //3. You can remove one shape from ComplexShape
+    complexShape->RemoveShape(rect);
+
+
+    complexShape->Drawing();
+
+    if (complexShape) {
+        delete complexShape;
+    }
+}
+
+```
+
+### 附录2：<a name="ComplexShape.png">运行结果
+
+>1. 组合全部图形及组合图形的复杂图形
+
+![运行结果](ComplexShape.png)
+
+>2. 去掉ComplexShape中的一个Rec实例的复杂图形
+
+```C++
+//注意这段删除方法
+//You can remove one shape from ComplexShape
+complexShape->RemoveShape(rect);
+
+```
+![运行结果2](ComplexShape2.png)
+
+### 附录3：<a name="Composite.png"/> 组合模式图解 
 
 * 参考链接: [维基百科](https://en.wikipedia.org/wiki/Composite_pattern)
 

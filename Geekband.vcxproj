@@ -19,15 +19,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DesignPatterns\DrawingSystem\DrawingSystem_Test.cpp" />
+    <ClInclude Include="DesignPatterns\DrawingSystemComplex\Circle.h" />
+    <ClInclude Include="DesignPatterns\DrawingSystemComplex\ComplexShape.h" />
+    <ClInclude Include="DesignPatterns\DrawingSystemComplex\IShape.h" />
+    <ClInclude Include="DesignPatterns\DrawingSystemComplex\Line.h" />
+    <ClInclude Include="DesignPatterns\DrawingSystemComplex\Rec.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DesignPatterns\DrawingSystem\Circle.h" />
-    <ClInclude Include="DesignPatterns\DrawingSystem\DrawingSystem.h" />
-    <ClInclude Include="DesignPatterns\DrawingSystem\Line.h" />
-    <ClInclude Include="DesignPatterns\DrawingSystem\Rec.h" />
-    <ClInclude Include="DesignPatterns\DrawingSystem\IShape.h" />
-    <ClInclude Include="DesignPatterns\DrawingSystem\IShapeFactory.h" />
+    <ClCompile Include="DesignPatterns\DrawingSystemComplex\DrawingSystemComplex_Test.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DesignPatterns\DrawingSystemComplex\Readme.md" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{1DF87945-8BC2-4119-BDA3-962E9E916D0C}</ProjectGuid>

@@ -6,7 +6,9 @@
 * [题解及运行结果](#answer)
   * [代码片段示例](#code)
   * [运行结果截图](#ComplexShape.png)
-  * [设计模式图解](#Composite.png)
+* [模式分析](#Patterns)
+     * [组合模式图解](#Composite.png)
+     * [本题设计模式分解](#CompositeInstance.png)
 
 ## <a name="question"/> 问题
 >  针对DrawingSystem中的基类Shape和各个子类Line、Rec、Circle，
@@ -25,7 +27,7 @@
 * 之前的分析解决方法有点问题，`AbstractFactory`并**`不能`**解决“`自由组合`”的问题，因为`抽象工厂`更多的是解决`系列`创建的问题。
   而系列创建需要稳定的抽象部分，如果把本问题的`自由组合`部分放在抽象工厂中作为稳定的部分，就显得完全不合理了。
 * 综上所述，还是应该采用更为合理的`组合模式`来解决`自由组合`的问题。
-
+* 
 
 ### 解答
 
@@ -90,10 +92,21 @@ complexShape->RemoveShape(rect);
 ```
 ![运行结果2](ComplexShape2.png)
 
-### 附录3：<a name="Composite.png"/> 组合模式图解 
+### 附录3：<a name="Patterns"> 模式分析
+
+下面进行设计模式分析，首先是摆出wiki关于模式的图解，然后再结合模式给出本题进行类图关系及模式分析。
+
+#### <a name="Composite.png"/> 组合模式图解 
 
 * 参考链接: [维基百科](https://en.wikipedia.org/wiki/Composite_pattern)
 
 ![工厂方法](Composite.png)
+
+#### <a name="CompositeInstance.png"> 本题设计模式分解
+
+针对本题，对照[组合模式](#Composite.png) 模式分解如下
+
+![本题设计模式分解](CompositeInstance.png)
+
 
 

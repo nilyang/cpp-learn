@@ -4,6 +4,9 @@
 
 * [问题](#question)
 * [题解及运行结果](#answer)
+  * [代码片段示例](#code)
+  * [运行结果截图](#ComplexShape.png)
+  * [设计模式图解](#Composite.png)
 
 ## <a name="question"/> 问题
 >  针对DrawingSystem中的基类Shape和各个子类Line、Rec、Circle，
@@ -26,7 +29,7 @@
 
 ### 解答
 
-* 具体代码参考源码部分，本文只给出代码片段[代码示例](#code)
+* 具体代码参考源码部分，本文只给出代码片段[代码片段示例](#code)
 * 运行结果[运行结果](#ComplexShape.png)截图
 * 设计模式[图解](#Composite.png)
 

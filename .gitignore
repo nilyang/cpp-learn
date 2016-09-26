@@ -28,3 +28,6 @@
 *.app
 # for ides
 .idea/
+/Debug/DrawingSystem.tlog
+/Debug
+/.vs/Geekband/v14

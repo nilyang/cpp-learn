@@ -19,21 +19,27 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DesignPatterns\DrawingSystemComplex\Circle.h" />
-    <ClInclude Include="DesignPatterns\DrawingSystemComplex\ComplexShape.h" />
-    <ClInclude Include="DesignPatterns\DrawingSystemComplex\IShape.h" />
-    <ClInclude Include="DesignPatterns\DrawingSystemComplex\Line.h" />
-    <ClInclude Include="DesignPatterns\DrawingSystemComplex\Rec.h" />
+    <ClInclude Include="Language\DesignPatterns\DrawingSystem\Circle.h" />
+    <ClInclude Include="Language\DesignPatterns\DrawingSystem\DrawingSystem.h" />
+    <ClInclude Include="Language\DesignPatterns\DrawingSystem\IShape.h" />
+    <ClInclude Include="Language\DesignPatterns\DrawingSystem\IShapeFactory.h" />
+    <ClInclude Include="Language\DesignPatterns\DrawingSystem\Line.h" />
+    <ClInclude Include="Language\DesignPatterns\DrawingSystem\Rec.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DesignPatterns\DrawingSystemComplex\DrawingSystemComplex_Test.cpp" />
+    <ClCompile Include="Language\DesignPatterns\DrawingSystem\DrawingSystem_Test.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="DesignPatterns\DrawingSystemComplex\Readme.md" />
+    <None Include="Language\DesignPatterns\DrawingSystem\Blog.md" />
+    <None Include="Language\DesignPatterns\DrawingSystem\Readme.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Language\DesignPatterns\DrawingSystem\factory.png" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{1DF87945-8BC2-4119-BDA3-962E9E916D0C}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
+    <ProjectName>DrawingSystem</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
